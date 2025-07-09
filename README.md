@@ -47,16 +47,15 @@ npm install
 ```
 
 ## 2. Initialize Sequelize (with force overwrite)
-
+### run this command
 ```bash
-run this command -> npx sequelize-cli init --force
+npx sequelize-cli init --force
+```
 
-This creates a /db folder with:
-
+### This creates a /db folder with:
 db/models/
 db/migrations/
 db/seeders/
-```
 
 ## 3. Configure Sequelize for TypeScript
 ### Edit: configs/sequelize.config.ts
