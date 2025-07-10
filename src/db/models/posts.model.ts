@@ -17,7 +17,7 @@ class Posts extends Model<
   declare id: number;
   declare title: string;
   declare content: string;
-  declare userId: string;
+  declare userId: number;
 }
 
 Posts.init(
