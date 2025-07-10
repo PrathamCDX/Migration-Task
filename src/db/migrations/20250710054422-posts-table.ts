@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import { QueryInterface } from "sequelize";
+import { QueryInterface } from 'sequelize';
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface: QueryInterface) {
-    await queryInterface.sequelize.query(`
+    async up(queryInterface: QueryInterface) {
+        await queryInterface.sequelize.query(`
       CREATE TABLE posts (
         id INT AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
@@ -13,11 +13,11 @@ module.exports = {
         userId INTEGER NOT NULL
       );
     `);
-  },
+    },
 
-  async down(queryInterface: QueryInterface) {
-    await queryInterface.sequelize.query(`
+    async down(queryInterface: QueryInterface) {
+        await queryInterface.sequelize.query(`
       DROP TABLE IF EXISTS posts;
     `);
-  },
+    },
 };
