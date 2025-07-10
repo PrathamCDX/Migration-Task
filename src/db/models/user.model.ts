@@ -10,13 +10,16 @@ import {
 
 import sequelize from "./sequelize";
 
-class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
+class Users extends Model<
+  InferAttributes<Users>,
+  InferCreationAttributes<Users>
+> {
   declare id: number;
   declare name: string;
   declare email: string;
 }
 
-User.init(
+Users.init(
   {
     id: {
       type: DataTypes.INTEGER,

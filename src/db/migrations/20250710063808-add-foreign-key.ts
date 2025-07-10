@@ -1,15 +1,13 @@
-"use strict";
-
 import { QueryInterface } from "sequelize";
 
 module.exports = {
   async up(queryInterface: QueryInterface) {
     await queryInterface.sequelize.query(`
-      CREATE TABLE users (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL
-      );
+      ALTER TABLE posts
+      ADD CONSTRAINT fk_posts_user
+      FOREIGN KEY (userId)
+      REFERENCES users(id)
+      ON DELETE CASCADE;
     `);
   },
 
@@ -19,9 +17,6 @@ module.exports = {
         ALTER TABLE posts
         DROP CONSTRAINT fk_posts_user;
       `);
-    } catch (error) {
-    } finally {
-      await queryInterface.sequelize.query(`DROP TABLE IF EXISTS users;`);
-    }
+    } catch (error) {}
   },
 };
