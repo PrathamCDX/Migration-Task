@@ -1,6 +1,3 @@
-// Model: User
-// Create: db/models/user.model.ts -> columns -> (id, name, email)
-
 import { DataTypes, InferAttributes, InferCreationAttributes, Model } from 'sequelize';
 
 import Post from './posts.model';
@@ -31,9 +28,9 @@ User.init(
     { tableName: 'users', sequelize }
 );
 
+// Association: User has many Posts
 User.hasMany(Post, {
-    foreignKey: 'userId', 
-    
+    foreignKey: 'userId',
 });
 
-export default User ;
+export default User;
