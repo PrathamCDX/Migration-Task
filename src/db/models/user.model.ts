@@ -28,9 +28,9 @@ User.init(
     { tableName: 'users', sequelize }
 );
 
-// Keep this association to connect User -> Post
+// Association: User has many Posts
 User.hasMany(Post, {
-    foreignKey: 'userId', 
+    foreignKey: 'userId',
 });
 
 export default User;

@@ -13,7 +13,7 @@ class Post extends Model<InferAttributes<Post>, InferCreationAttributes<Post>> {
 Post.init(
     {
         id: {
-            type: DataTypes.INTEGER,   // Use INTEGER for id
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -26,14 +26,14 @@ Post.init(
             type: DataTypes.STRING,
         },
         userId: {
-            type: DataTypes.INTEGER,   // Use INTEGER for FK
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
     },
     { tableName: 'posts', sequelize }
 );
 
-// Keep this association to connect Post -> User
+// Association: Post belongs to User
 Post.belongsTo(User, {
     foreignKey: 'userId',
 });
