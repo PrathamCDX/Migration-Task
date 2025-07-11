@@ -12,7 +12,7 @@ class BaseRepository<T extends Model> {
         return await this.model.create(data);
     }
 
-    async findById(id: number | string): Promise<T | null> {
+    async findById(id: number): Promise<T | null> {
         return this.model.findByPk(id);
     }
 
