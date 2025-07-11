@@ -1,11 +1,7 @@
-// Model: Post
-// Create: db/models/post.model.ts -> columns -> (id, title, content, userId(FK references to users table))
-
-import { DataTypes,InferAttributes, InferCreationAttributes, Model } from 'sequelize';
+import { DataTypes, InferAttributes, InferCreationAttributes, Model } from 'sequelize';
 
 import sequelize from './sequelize';
 import User from './user.model';
-
 
 class Post extends Model<InferAttributes<Post>, InferCreationAttributes<Post>> {
     declare id: number;
@@ -17,7 +13,7 @@ class Post extends Model<InferAttributes<Post>, InferCreationAttributes<Post>> {
 Post.init(
     {
         id: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,   // Use INTEGER for id
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -30,13 +26,16 @@ Post.init(
             type: DataTypes.STRING,
         },
         userId: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,   // Use INTEGER for FK
             allowNull: false,
         },
     },
-    {tableName: 'posts', sequelize }
+    { tableName: 'posts', sequelize }
 );
 
-Post.belongsTo(User);
+// Keep this association to connect Post -> User
+Post.belongsTo(User, {
+    foreignKey: 'userId',
+});
 
 export default Post;
