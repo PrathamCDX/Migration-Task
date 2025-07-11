@@ -12,7 +12,7 @@ class BaseRepository<T extends Model> {
         return await this.model.create(data);
     }
 
-    // RESOLVED CONFLICT: Use the flexible type from main branch
+    // Use the flexible type from main branch
     async findById(id: number | string): Promise<T | null> {
         return this.model.findByPk(id);
     }
@@ -25,11 +25,13 @@ class BaseRepository<T extends Model> {
         id: Attributes<T>['id'],
         data: CreationAttributes<T>,
     ): Promise<[affectedCount: number, affectedRows: T[]]> {
+        // Clean formatting, single space after comma, returning: true
         const response = await this.model.update(data, { where: { id }, returning: true });
         return response;
     }
 
     async deleteById(id: Attributes<T>['id']): Promise<number> {
+        // Clean formatting, single space after comma
         return this.model.destroy({ where: { id } });
     }
 }
