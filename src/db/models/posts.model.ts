@@ -4,6 +4,7 @@
 import { DataTypes,InferAttributes, InferCreationAttributes, Model } from 'sequelize';
 
 import sequelize from './sequelize';
+import User from './user.model';
 
 
 class Post extends Model<InferAttributes<Post>, InferCreationAttributes<Post>> {
@@ -33,8 +34,9 @@ Post.init(
             allowNull: false,
         },
     },
-    { sequelize }
+    {tableName: 'posts', sequelize }
 );
 
+Post.belongsTo(User);
 
 export default Post;
