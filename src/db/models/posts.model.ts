@@ -18,6 +18,7 @@ Post.init(
         id: {
             type: DataTypes.NUMBER,
             allowNull: false,
+            primaryKey: true,
             autoIncrement: true,
         },
         title: {
@@ -34,3 +35,6 @@ Post.init(
     },
     { sequelize }
 );
+
+
+export default Post;
